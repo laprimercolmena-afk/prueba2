@@ -1,98 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SENA</title>
-    <!--importamos fuentes de google-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
-    <!-- importamos materialize.css -->
- <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
- <link rel="icon" href="imagenes/libros.png" type="image/x-icon">
+    <!-- Fuentes de Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css">
+    <link rel="icon" href="imagenes/libros.png" type="image/x-icon">
+    <style>
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            display: none;
+            margin-top: 4px;
+        }
+    </style>
 </head>
 <body>
-    <!-- incluimos javascript al final del cuerpo para optimizar la carga -->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+
     <nav class="orange darken-4">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">
-      <img src="imagenes/logo.png" style="width: 65px;">
-      </a>
-       <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href="index.html">Home</a></li>
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <img src="imagenes/logo.png" alt="Logo SENA" style="width: 65px; vertical-align: middle;">
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="etapa.html">Etapa Productiva</a></li>
                 <li><a href="modalidades.html">Modalidades</a></li>
                 <li><a href="registrarse.html">Registrarse</a></li>
-                <li><a href="login.html">login</a></li>
+                <li><a href="login.html">Login</a></li>
             </ul>
-    </div>
+        </div>
     </nav>
 
     <div class="container">
-            <h1 class="header center orange darken-4-text ">
-              Bienvenido a Nuestro Sistema SENA
-            </h1>
+        <h1 class="header center orange-text text-darken-4">
+            Bienvenido a Nuestro Sistema SENA
+        </h1>
     </div>
-        <div class="container section">
-          <div class="row card-panel">
-            <form class="col s12">
-              <div class="input-field col s6">
-                <label for="nomUsuario">Ingresa tu primer nombre</label>
-                <input type="text" id="nomUsuario" class="validate" required>
-              </div>
-                            <div class="input-field col s6">
-                <label for="nomUsuario">Ingresa tu segundo nombre</label>
-                <input type="text" id="nomUsuario" class="validate" required>
-              </div>
-                            <div class="input-field col s6">
-                <label for="nomUsuario">Ingresa tu primer apellido</label>
-                <input type="text" id="nomUsuario" class="validate" required>
-              </div>
-                            <div class="input-field col s6">
-                <label for="nomUsuario">Ingresa tu segundo apellido</label>
-                <input type="text" id="nomUsuario" class="validate" required>
-              </div>
-              <div class="input-field col s6">
-                <label for="contraseña">Ingresa tu contraseña</label>
-                <input type="password" id="contraseña" class="validate" required>
-              </div>
-              <div class="input-field col s6">
-                <label for="contraseña">Confirma tu contraseña</label>
-                <input type="password" id="contraseña" class="validate" required>
-              </div>
-              <button class="btn orange wanes-effect wanes-ligth right" type="submit" name="enviar">ingresar
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-  
 
-    <footer class="page-footer orange darken-4 ">
+    <div class="container section">
+        <div class="row card-panel">
+            <form class="col s12" id="formularioLogin">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" id="primerNombre" class="validate" required>
+                        <label for="primerNombre">Ingresa tu primer nombre</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input type="text" id="segundoNombre" class="validate">
+                        <label for="segundoNombre">Ingresa tu segundo nombre</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input type="text" id="primerApellido" class="validate" required>
+                        <label for="primerApellido">Ingresa tu primer apellido</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input type="text" id="segundoApellido" class="validate">
+                        <label for="segundoApellido">Ingresa tu segundo apellido</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input type="password" id="password" class="validate" required>
+                        <label for="password">Contraseña (Mín. 16 caract., Mayúscula, Minúscula y Número)</label>
+                        <span id="alerta-password" class="error-message">
+                            La contraseña debe tener al menos 16 caracteres, una mayúscula, una minúscula y un número
+                        </span>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <input type="password" id="confirm_password" class="validate" required>
+                        <label for="confirm_password">Confirma tu contraseña</label>
+                        <span id="alerta-coincidencia" class="error-message">
+                            Las contraseñas no coinciden.
+                        </span>
+                    </div>
+
+                    <div class="col s12">
+                        <button class="btn orange darken-4 waves-effect waves-light right" type="submit" name="enviar">
+                            Ingresar
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="page-footer orange darken-4">
+        <div class="container">
             <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Servicio Nacional de Aprendizaje Sena</h5>
-                <p class="grey-text text-lighten-4">Centro Sur Colombiano de Logistica Internacional</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a class="grey-text text-lighten-3" href="https://zajuna.sena.edu.co/">Zajuna</a></li>
-                  <li><a class="grey-text text-lighten-3" href="http://senasofiaplus.edu.co/sofia-public/">Sofia Plus</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://betowa.sena.edu.co/">Bettowa</a></li>
-                  <li><a class="grey-text text-lighten-3" href="https://www.google.com/?hl=es">Google</a></li>
-                </ul>
-              </div>
+                <div class="col l6 s12">
+                    <h5 class="white-text">Servicio Nacional de Aprendizaje SENA</h5>
+                    <p class="grey-text text-lighten-4">Centro Sur Colombiano de Logística Internacional</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="https://zajuna.sena.edu.co/" target="_blank">Zajuna</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://senasofiaplus.edu.co/sofia-public/" target="_blank">Sofia Plus</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://betowa.sena.edu.co/" target="_blank">Betowa</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.google.com/?hl=es" target="_blank">Google</a></li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="footer-copyright">
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-            © 2026 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                © 2026 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
-          </div>
-        </footer>
-            
+        </div>
+    </footer>
+
+    <!-- JS de Materialize al final del cuerpo -->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Inicializar componentes JS de Materialize si es necesario
+        M.updateTextFields();
+
+        const form = document.getElementById('formularioLogin');
+        const passInput = document.getElementById('password');
+        const confirmInput = document.getElementById('confirm_password');
+        const alertaRequisitos = document.getElementById('alerta-password');
+        const alertaCoincidencia = document.getElementById('alerta-coincidencia');
+
+        // Mínimo 16 caracteres, 1 mayúscula, 1 minúscula y 1 número
+        const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{16,}$/;
+
+        function validarContrasena() {
+            let esValido = true;
+
+            // 1. Validar requisitos de la contraseña
+            if (passInput.value.length > 0 && !regexPassword.test(passInput.value)) {
+                alertaRequisitos.style.display = 'block';
+                esValido = false;
+            } else {
+                alertaRequisitos.style.display = 'none';
+            }
+
+            // 2. Validar que ambas contraseñas coincidan
+            if (confirmInput.value.length > 0 && passInput.value !== confirmInput.value) {
+                alertaCoincidencia.style.display = 'block';
+                esValido = false;
+            } else {
+                alertaCoincidencia.style.display = 'none';
+            }
+
+            return esValido;
+        }
+
+        // Escuchar eventos en tiempo real
+        passInput.addEventListener('input', validarContrasena);
+        confirmInput.addEventListener('input', validarContrasena);
+
+        // Validar al enviar el formulario
+        form.addEventListener('submit', function (event) {
+            const esFormularioValido = validarContrasena();
+
+            if (!esFormularioValido) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        });
+    });
+    </script>            
 </body>
 </html>
